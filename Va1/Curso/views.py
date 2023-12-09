@@ -1,3 +1,12 @@
-from django.shortcuts import render
+# Curso/views.py
+from rest_framework import generics
+from .models import Curso
+from .serializers import CursoSerializer
 
-# Create your views here.
+class CursoListCreateView(generics.ListCreateAPIView):
+    queryset = Curso.objects.all()
+    serializer_class = CursoSerializer
+
+class CursoDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Curso.objects.all()
+    serializer_class = CursoSerializer
